@@ -1,0 +1,186 @@
+Current configuration : 2888 bytes
+!
+! Last configuration change at 23:34:51 UTC Tue Oct 27 2026 by user_n10
+!
+version 15.7
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging buffered 16384
+logging console informational
+enable secret 5 $1$O0Ry$t2AK/mwRQzWN9ZC.4a3Ed/
+!
+aaa new-model
+!
+!
+aaa group server radius GRP_NPS
+ server name NPS
+ ip radius source-interface Ethernet0/0
+!
+aaa authentication login default local
+aaa authentication login VTY_RADIUS group GRP_NPS local
+aaa authentication login CON_LOCAL local
+aaa authentication enable default group GRP_NPS enable
+aaa authorization console
+aaa authorization exec default local
+aaa authorization exec VTY_RADIUS group GRP_NPS local
+aaa authorization exec CON_LOCAL local
+aaa accounting exec default start-stop group GRP_NPS
+aaa accounting connection default start-stop group GRP_NPS
+!
+!
+!
+!
+!
+aaa session-id common
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name lab.local
+ip cef
+login on-failure log
+login on-success log
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+username admin privilege 15 secret 5 $1$773C$FJ1XtPNsnqHlh4oppEBAN.
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ description Hacia Switch (gestion)
+ ip address 14.10.10.3 255.255.255.240
+ duplex auto
+!
+interface Ethernet0/1
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+ duplex auto
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh time-out 60
+ip ssh version 2
+!
+ip radius source-interface Ethernet0/0
+ipv6 ioam timestamp
+!
+!
+!
+!
+radius server NPS
+ address ipv4 14.10.10.2 auth-port 1812 acct-port 1813
+ key 7 097841101B0A03435C
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+privilege interface level 10 shutdown
+privilege interface level 10 ip address
+privilege interface level 10 ip
+privilege interface level 10 description
+privilege configure level 10 interface
+privilege exec level 10 configure terminal
+privilege exec level 10 configure
+privilege exec level 5 show ip route
+privilege exec level 5 show ip interface brief
+privilege exec level 5 show ip interface
+privilege exec level 5 show ip
+privilege exec level 5 show users
+privilege exec level 5 show version
+privilege exec level 5 show running-config
+privilege exec level 5 show interfaces
+privilege exec level 5 show
+!
+line con 0
+ exec-timeout 5 0
+ authorization exec CON_LOCAL
+ logging synchronous
+ login authentication CON_LOCAL
+line aux 0
+ exec-timeout 5 0
+ authorization exec CON_LOCAL
+ login authentication CON_LOCAL
+line vty 0 4
+ exec-timeout 5 0
+ authorization exec VTY_RADIUS
+ login authentication VTY_RADIUS
+ transport input ssh
+!
+!
+end

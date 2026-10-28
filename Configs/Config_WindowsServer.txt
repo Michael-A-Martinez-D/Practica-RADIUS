@@ -1,0 +1,4 @@
+New-NetIPAddress -InterfaceAlias "Ethernet" -IPAddress 14.10.10.2 -PrefixLength 28 -DefaultGateway 14.10.10.3
+Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses 127.0.0.1
+Enable-NetFirewallRule -Name FPS-ICMP4-ERQ-In
+Rename-Computer -NewName "SRV-AAA" -Restart
