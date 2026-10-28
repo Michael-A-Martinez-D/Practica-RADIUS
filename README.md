@@ -4,6 +4,8 @@ El propósito de este laboratorio es comprobar como el servicio RADIUS puede cen
 
 ## Direccionamiento VLSM - Infraestructura 3 (AAA con RADIUS)
 
+Matricula: 2025-1410
+
 Red base: `14.10.0.0/16` (últimos 4 dígitos de la matrícula)
 
 | # | Segmento | Red | Máscara | Prefijo | Hosts | Rango útil | Broadcast |
