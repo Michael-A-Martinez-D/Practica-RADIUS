@@ -2,6 +2,16 @@ Enlace del video: https://youtu.be/K7sv36a3oyM
 
 El propósito de este laboratorio es comprobar como el servicio RADIUS puede centralizar la autenticación, autorización y logs de los equipos de red con RADIUS (NPS y Active Directory), para que cada administrador entre con su propio usuario y solo tenga los permisos de su nivel.
 
+## Versiones de los dispositivos
+
+| Dispositivo | Imagen / Versión | Rol |
+|-------------|------------------|-----|
+| Router | Cisco IOL (versión: 15.7) | Cliente RADIUS, SSH |
+| Switch | Cisco vIOS-L2 `viosl2-adventerprisek9-m.ssa.high_iron_20200929` (versión: 15.2) | Cliente RADIUS, SSH |
+| Servidor | Windows Server 2022 (Standard, Desktop Experience) | Active Directory y NPS |
+| PNetLab | versión: 4.2.10 | Plataforma de simulación |
+
+
 ## Direccionamiento VLSM - Infraestructura 3 (AAA con RADIUS)
 
 Matricula: 2025-1410
