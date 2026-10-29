@@ -12,7 +12,7 @@ El propósito de este laboratorio es comprobar como el servicio RADIUS puede cen
 | PNetLab | versión: 4.2.10 | Plataforma de simulación |
 
 
-## Direccionamiento VLSM - Infraestructura 3 (AAA con RADIUS)
+## Direccionamiento VLSM 
 
 Matricula: 2025-1410
 
